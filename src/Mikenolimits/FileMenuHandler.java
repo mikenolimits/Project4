@@ -17,15 +17,12 @@ public class FileMenuHandler implements ActionListener {
 
     public static enum Action {
         OPEN,
-        QUIT,
-        FIELDER,
-        PITCHER,
-        ALL
+        QUIT
     }
 
     public void actionPerformed(ActionEvent event) {
         String  menuName;
-        menuName = event.getActionCommand();
+        menuName         = event.getActionCommand();
 
         Action actionVal = Action.valueOf(menuName.toUpperCase());
 
@@ -35,21 +32,6 @@ public class FileMenuHandler implements ActionListener {
                 break;
             case QUIT:
                 System.exit(0);
-                break;
-            case FIELDER:
-                GUI.text1.setVisible(false);
-                GUI.text3.setVisible(false);
-                GUI.text2.setVisible(true);
-                break;
-            case PITCHER:
-                GUI.text1.setVisible(false);
-                GUI.text2.setVisible(false);
-                GUI.text3.setVisible(true);
-                break;
-            case ALL:
-                GUI.text1.setVisible(true);
-                GUI.text2.setVisible(true);
-                GUI.text3.setVisible(true);
                 break;
             default:
                     System.out.println("Not Found event...");

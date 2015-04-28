@@ -9,13 +9,12 @@ import java.util.ArrayList;
 public class GUI extends JFrame{
 
 
-    private String words[];
+    String words[];
     public static TextArea text1;
     public static TextArea text2;
     public static TextArea text3;
     public static TextArea errorsLog;
 
-    public static FileMenuHandler eventHandler;
 
     //Enums for menus for easy iterations
 
@@ -43,8 +42,6 @@ public class GUI extends JFrame{
         text2 = new TextArea();
         text3 = new TextArea();
         errorsLog = new TextArea();
-        TextArea temp = new TextArea();
-        eventHandler             = new FileMenuHandler(this);
         JMenuBar    menuBar      = new JMenuBar();
         JMenu       fileMenu     = new JMenu("File");
         JMenu       displayMenu  = new JMenu("Display");
@@ -59,14 +56,14 @@ public class GUI extends JFrame{
 
         for (displayActions action : displayActions.values()) {
             JMenuItem i = new JMenuItem(action.toString());
-            i.addActionListener(eventHandler);
+            i.addActionListener(new DisplayMenuHandler(this));
             displayMenu.add(i);
             displayMenu.addSeparator();
         }
 
         for (fileActions action : fileActions.values()) {
             JMenuItem i = new JMenuItem(action.toString());
-            i.addActionListener(eventHandler);
+            i.addActionListener(new FileMenuHandler(this));
             fileMenu.add(i);
             fileMenu.addSeparator();
         }
