@@ -11,8 +11,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        WordFrame     = new GUI("Project 3",1000,4000);
-        Reader        = new WordSorter("players.txt");
+        WordFrame     = new GUI("Project 3",1000,6000);
+        setColumns("players.txt");
+    }
+
+    public static void setColumns(String textlocation) {
+
+        Reader        = new WordSorter(textlocation);
 
         //The GetWords method will have added all the lines, and as they were added,
         //They will have sorted themselves. The getList will have returned

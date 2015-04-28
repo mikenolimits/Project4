@@ -50,21 +50,39 @@ public class WordSorter {
 
             String [] allWordsInLine = current.split(",");
 
-                append(allWordsInLine);
+            char type = allWordsInLine[0].toCharArray()[0];
 
-                Player currentPlayer = new Player(
-                        allWordsInLine[0].charAt(0),
-                        allWordsInLine[4],
-                        allWordsInLine[1],
-                        allWordsInLine[3],
-                        allWordsInLine[2]
-                );
+            if (type == 'P' && allWordsInLine.length != 6) {
+                tokenError(current);
+                continue;
 
-                //Our First Column needs to be unorganized therefore even as we're looping
-                //We need to stick all the players in one big pile.
-                unorganizedList.add(currentPlayer);
+            }else if (type == 'F' && allWordsInLine.length != 5) {
+                tokenError(current);
+                continue;
+            }
+
+            append(allWordsInLine);
+
+
+            Player currentPlayer = new Player(
+                            allWordsInLine[0].charAt(0),
+                            allWordsInLine[4],
+                            allWordsInLine[1],
+                            allWordsInLine[3],
+                            allWordsInLine[2]
+            );
+
+            //Our First Column needs to be unorganized therefore even as we're looping
+            //We need to stick all the players in one big pile.
+            unorganizedList.add(currentPlayer);
+          }
+
         }
 
+    private void tokenError(String current) {
+        String e = "The line '" + current + "' does not have enough tokens \n";
+        GUI.errorsLog.append(e);
+        System.out.println(e);
     }
 
     /**
@@ -93,12 +111,12 @@ public class WordSorter {
                 break;
             case 'P':
                 currentPlayer.put("era",allWordsInLine[5]);
-
-
                 players.add(currentPlayer);
                 break;
             default:
-                throw new IllegalArgumentException("The Type Doesn't Exist...");
+                String e = playerType.charAt(0) + " Is Not a valid type" + "\n";
+                System.out.println(e);
+                GUI.errorsLog.append(e);
         }
     }
 

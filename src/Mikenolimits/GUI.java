@@ -1,5 +1,7 @@
 
 package Mikenolimits;
+import sun.tools.jconsole.JConsole;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -11,6 +13,8 @@ public class GUI extends JFrame{
     public static TextArea text1;
     public static TextArea text2;
     public static TextArea text3;
+    public static TextArea errorsLog;
+
     public static FileMenuHandler eventHandler;
 
     //Enums for menus for easy iterations
@@ -38,6 +42,8 @@ public class GUI extends JFrame{
         text1 = new TextArea();
         text2 = new TextArea();
         text3 = new TextArea();
+        errorsLog = new TextArea();
+        TextArea temp = new TextArea();
         eventHandler             = new FileMenuHandler(this);
         JMenuBar    menuBar      = new JMenuBar();
         JMenu       fileMenu     = new JMenu("File");
@@ -49,6 +55,7 @@ public class GUI extends JFrame{
         add(text1);
         add(text2);
         add(text3);
+
 
         for (displayActions action : displayActions.values()) {
             JMenuItem i = new JMenuItem(action.toString());
@@ -69,7 +76,14 @@ public class GUI extends JFrame{
         menuBar.add(fileMenu);
         menuBar.add(displayMenu);
 
-        setLayout(new GridLayout(1,3));
+        setLayout(new GridLayout(2,3));
+        add(new JSeparator());
+        errorsLog.setSize(100, 4000);
+        errorsLog.setColumns(3);
+        add(errorsLog);
+
+        errorsLog.append("ERRORS LOG : \n");
+
         setVisible(true);
         text1.setBackground(Color.cyan);
         text2.setBackground(Color.magenta);

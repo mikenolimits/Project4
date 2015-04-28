@@ -26,8 +26,15 @@ public class Player {
 
         float avg = Float.parseFloat(battingAvg);
 
-        if(avg < 0 || avg > 100){
-            throw new IllegalArgumentException("Batting Avg Is Out Of Range...");
+        try{
+            if(Integer.valueOf(number) > 99){
+                throw new IllegalArgumentException("Number of " + number + " Is Out Of Range...");
+            }else if (avg > 1.000){
+                throw new IllegalArgumentException("Batting Avg of " + avg +" Is out of range");
+            }
+        }catch (IllegalArgumentException e){
+            System.out.println(e.toString());
+            GUI.errorsLog.append(e.toString());
         }
 
         setPlayerType(playerType);

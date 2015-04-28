@@ -57,7 +57,7 @@ public class FileMenuHandler implements ActionListener {
         }
 
 
-    } //actionPerformed
+    }
 
     private void openFile( ) {
         JFileChooser chooser;
@@ -68,26 +68,15 @@ public class FileMenuHandler implements ActionListener {
             readSource(chooser.getSelectedFile());
         else
             JOptionPane.showMessageDialog(null, "Open File dialog canceled");
-    } //openFile
+    }
 
     private void readSource(File chosenFile) {
         String chosenFileName = chosenFile.getName();
-        TextFileInput inFile = new TextFileInput(chosenFileName);
-        String ssn;
-        int subscript = 0;
-        Container myContentPane = jframe.getContentPane();
-        TextArea myTextArea = new TextArea();
-        TextArea mySubscripts = new TextArea();
-        myContentPane.add(myTextArea, BorderLayout.EAST);
-        myContentPane.add(mySubscripts, BorderLayout.WEST);
 
-        ssn = inFile.readLine();
-        while (ssn != null) {
-            mySubscripts.append(Integer.toString(subscript++)+"\n");
-            myTextArea.append(ssn+"\n");
-            ssn = inFile.readLine();
-        } //while
-        //    jframe.setVisible(true);
-        jframe.setVisible(true);
+        GUI.text1.setText("");
+        GUI.text2.setText("");
+        GUI.text3.setText("");
+        GUI.errorsLog.setText("ERROS LOG: \n");
+        Main.setColumns(chosenFileName);
     }
 }
