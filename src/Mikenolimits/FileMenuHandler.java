@@ -56,7 +56,6 @@ public class FileMenuHandler implements ActionListener {
                 break;
         }
 
-
     }
 
     private void openFile( ) {
