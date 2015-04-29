@@ -10,9 +10,9 @@ import java.lang.*;
  */
 public class DisplayMenuHandler implements ActionListener {
 
-    JFrame jframe;
+    GUI jframe;
 
-    public DisplayMenuHandler(JFrame jf) {
+    public DisplayMenuHandler(GUI jf) {
         jframe = jf;
     }
 
@@ -31,19 +31,22 @@ public class DisplayMenuHandler implements ActionListener {
 
         switch(actionVal){
             case FIELDER:
-                GUI.text1.setVisible(false);
-                GUI.text3.setVisible(false);
-                GUI.text2.setVisible(true);
+                jframe.setVisible(1);
+                //GUI.text1.setVisible(false);
+                //GUI.text3.setVisible(false);
+                //GUI.text2.setVisible(true);
                 break;
             case PITCHER:
-                GUI.text1.setVisible(false);
-                GUI.text2.setVisible(false);
-                GUI.text3.setVisible(true);
+                jframe.setVisible(2);
+                //GUI.text1.setVisible(false);
+                //GUI.text2.setVisible(false);
+                //GUI.text3.setVisible(true);
                 break;
             case ALL:
-                GUI.text1.setVisible(true);
-                GUI.text2.setVisible(true);
-                GUI.text3.setVisible(true);
+                jframe.setVisible(3);
+                //GUI.text1.setVisible(true);
+                //GUI.text2.setVisible(true);
+                //GUI.text3.setVisible(true);
                 break;
         }
 

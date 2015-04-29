@@ -14,6 +14,7 @@ public class GUI extends JFrame{
     public static TextArea text2;
     public static TextArea text3;
     public static TextArea errorsLog;
+    public static JSeparator seperator;
 
 
     //Enums for menus for easy iterations
@@ -29,7 +30,6 @@ public class GUI extends JFrame{
         QUIT
     }
 
-
     /*
        Constructor for the GUI to do basic setup.
        It creates a 1 row, 2 column layout each with their own
@@ -42,6 +42,7 @@ public class GUI extends JFrame{
         text2 = new TextArea();
         text3 = new TextArea();
         errorsLog = new TextArea();
+        seperator = new JSeparator();
         JMenuBar    menuBar      = new JMenuBar();
         JMenu       fileMenu     = new JMenu("File");
         JMenu       displayMenu  = new JMenu("Display");
@@ -74,9 +75,7 @@ public class GUI extends JFrame{
         menuBar.add(displayMenu);
 
         setLayout(new GridLayout(2,3));
-        add(new JSeparator());
-        errorsLog.setSize(100, 4000);
-        errorsLog.setColumns(3);
+        add(seperator);
         add(errorsLog);
 
         errorsLog.append("ERRORS LOG : \n");
@@ -86,6 +85,45 @@ public class GUI extends JFrame{
         text2.setBackground(Color.magenta);
         text3.setBackground(Color.pink);
 
+    }
+
+    public void setVisible(int index){
+        switch(index){
+            case 1:
+                removeAllTexts();
+                setLayout(new GridLayout(2, 1));
+                this.add(text1);
+                this.add(errorsLog);
+                setVisible(true);
+                break;
+            case 2:
+                removeAllTexts();
+                setLayout(new GridLayout(2, 1));
+                this.add(text2);
+                this.add(errorsLog);
+                setVisible(true);
+                break;
+            case 3:
+                removeAllTexts();
+                setLayout(new GridLayout(2, 3));
+                this.add(text1);
+                this.add(text2);
+                this.add(text3);
+                this.add(seperator);
+                this.add(errorsLog);
+                setVisible(true);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void removeAllTexts() {
+        this.remove(text1);
+        this.remove(text2);
+        this.remove(text3);
+        this.remove(errorsLog);
+        this.remove(seperator);
     }
 
     /*

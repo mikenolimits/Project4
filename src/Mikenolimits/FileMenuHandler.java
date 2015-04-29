@@ -9,9 +9,9 @@ import java.awt.event.*;
 import java.io.*;
 import java.lang.*;
 public class FileMenuHandler implements ActionListener {
-    JFrame jframe;
+    GUI jframe;
 
-    public FileMenuHandler (JFrame jf) {
+    public FileMenuHandler (GUI jf) {
         jframe = jf;
     }
 
